@@ -12,9 +12,6 @@ const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
         </div>
     </form>
     `
-    document.getElementById('newButton').addEventListener('click', () => {
-        randomHouse(houses);
-    });
   });
 
 const printToDom = (toPrint, divId) => {
@@ -30,10 +27,18 @@ const randomHouse = (arr) => {
             <div class="card-body">
                 <h5 class="card-title">${inputVal}</h5>
                 <p class="card-text">${house}</p>
-                <button type="button" class="btn btn-light">Expel!</button>
+                <button type="button" class="btn btn-light expel">Expel!</button>
             </div>
         </div>
         `
     printToDom(domString, 'card-here');
 };
 
+document.body.addEventListener('click', function (event) {
+        if (event.target.classList.contains('expel')) {
+            alert('expel');
+        }
+        if (event.target.id == 'newButton') {
+            randomHouse(houses);
+        }
+    });
