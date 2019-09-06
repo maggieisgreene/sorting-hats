@@ -12,28 +12,28 @@ const houses = ['Gryffindor', 'Hufflepuff', 'Ravenclaw', 'Slytherin'];
         </div>
     </form>
     `
+    document.getElementById('newButton').addEventListener('click', () => {
+        randomHouse(houses);
+    });
   });
 
-  const printToDom = (toPrint, divId) => {
+const printToDom = (toPrint, divId) => {
     document.getElementById(divId).innerHTML += toPrint;
 }
 
 const randomHouse = (arr) => {
     let domString = '';
-    for (let i = 0; i < arr.length; i ++) {
-        const house = arr[Math.floor(Math.random() * arr.length)];
-        domString += `
+    const house = arr[Math.floor(Math.random() * arr.length)];
+    const inputVal = document.getElementById('student-name').value;
+    domString += `
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title"></h5>
-                <p class="card-text"></p>
+                <h5 class="card-title">${inputVal}</h5>
+                <p class="card-text">${house}</p>
                 <button type="button" class="btn btn-light">Expel!</button>
             </div>
         </div>
         `
-    }
     printToDom(domString, 'card-here');
 };
 
-document.getElementById('newButton').addEventListener('click', () => {
-    randomHouse(houses)});
