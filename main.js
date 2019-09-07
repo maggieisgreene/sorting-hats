@@ -18,27 +18,37 @@ const printToDom = (toPrint, divId) => {
     document.getElementById(divId).innerHTML += toPrint;
 }
 
+let i = 0;
+
 const randomHouse = (arr) => {
     let domString = '';
     const house = arr[Math.floor(Math.random() * arr.length)];
     const inputVal = document.getElementById('student-name').value;
     domString += `
-        <div class="card">
+        <div class="card" id="card-${i}">
             <div class="card-body">
                 <h5 class="card-title">${inputVal}</h5>
                 <p class="card-text">${house}</p>
-                <button type="button" class="btn btn-light expel">Expel!</button>
+                <button type="button" value="${i}" id="deleteButton" class="btn btn-light expel">Expel!</button>
             </div>
         </div>
         `
+        i += 1;
     printToDom(domString, 'card-here');
 };
 
-document.body.addEventListener('click', function (event) {
-        if (event.target.classList.contains('expel')) {
-            alert('expel');
+document.body.addEventListener('click', (event) => {
+        if (event.target.id === 'deleteButton') {
+            const buttonValue = event.target.value;
+            const cardId = `card-${buttonValue}`;
+            const card = document.getElementById(cardId);
+            card.parentNode.removeChild(card);
         }
-        if (event.target.id == 'newButton') {
+        if (event.target.id === 'newButton') {
             randomHouse(houses);
         }
     });
+
+document.getElementById('newButton').addEventListener('click', (event) => {
+        event.preventDefault();
+});
