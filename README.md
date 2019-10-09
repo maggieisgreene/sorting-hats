@@ -4,7 +4,7 @@
 Use this application to enter a student's name and have them assigned randomly to a house at Hogwarts. After the student has been assigned, you have the ability to expel them!
 
 ## Screenshots
-![Sorting Hat Preview]()
+![Sorting Hat Preview](https://raw.githubusercontent.com/maggieisgreene/sorting-hats/master/screenshots/sorting-hat.png)
 
 ## How to run
 * Clone down this project
